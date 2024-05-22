@@ -1,25 +1,24 @@
-const sequelize = require('./db'); // Your Sequelize instance
+const sequelize = require('./db'); 
 const express = require('express');
-const taskRoutes = require('./taskRoutes'); // Your routes
+const taskRoutes = require('./taskRoutes'); 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json()); // Middleware to parse JSON
+app.use(express.json()); 
 
 const cors = require('cors');
-app.use(cors()); // This allows all origins
+app.use(cors()); 
 
 
-// Sync Sequelize models with the database
-sequelize.sync({ force: false }) // `force: true` drops and recreates tables, use cautiously
+sequelize.sync({ force: false }) 
   .then(() => {
     console.log("Database synchronized");
 
-    // Setup routes
+   
     app.use('/api', taskRoutes);
 
-    // Start Express server
+  
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
-// Initialize Sequelize with connection details from environment variables
+
 const sequelize = new Sequelize({
   host: process.env.DB_HOST,
   database: process.env.DB_DATABASE,
@@ -11,4 +11,4 @@ const sequelize = new Sequelize({
   dialect: 'postgres', 
 });
 
-module.exports = sequelize; // Export the Sequelize instance
+module.exports = sequelize; 

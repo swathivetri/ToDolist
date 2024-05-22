@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('./db'); // Import your Sequelize instance
+const sequelize = require('./db'); 
 
 const Task = sequelize.define('Task', {
   id: {
@@ -9,14 +9,14 @@ const Task = sequelize.define('Task', {
   },
   text: {
     type: DataTypes.STRING,
-    allowNull: false, // The text field should not be null
+    allowNull: false, 
   },
   completed: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false, // Default to not completed
+    defaultValue: false, 
   },
 }, {
-  timestamps: true, // Optionally track createdAt and updatedAt
+  timestamps: true, 
 });
 
-module.exports = Task; // Export the model
+module.exports = Task; 

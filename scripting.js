@@ -1,4 +1,3 @@
-// Fetch tasks and add to the UI
 async function fetchTasks() {
   try {
     const response = await fetch(`http://localhost:5000/api/tasks`);
@@ -21,7 +20,7 @@ async function fetchTasks() {
   }
 }
 
-// Create a new task
+
 async function createTask() {
   const taskInput = document.getElementById("new-task");
   const taskText = taskInput.value.trim();
@@ -37,8 +36,8 @@ async function createTask() {
       });
 
       if (response.ok) {
-        taskInput.value = ""; // Clear the input
-        fetchTasks(); // Refresh the task list
+        taskInput.value = ""; 
+        fetchTasks(); 
       }
     } catch (error) {
       console.error("Error creating task:", error);
@@ -48,7 +47,7 @@ async function createTask() {
   }
 }
 
-// Toggle the completion status of a task
+
 async function toggleTask(id, isCompleted) {
   try {
     const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
@@ -56,11 +55,11 @@ async function toggleTask(id, isCompleted) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ completed: isCompleted }) // Update completed status
+      body: JSON.stringify({ completed: isCompleted }) 
     });
 
     if (response.ok) {
-      fetchTasks(); // Refresh the task list
+      fetchTasks(); 
     }
   } catch (error) {
     console.error("Error updating task:", error);
@@ -84,9 +83,9 @@ async function deleteTask(id) {
   }
 }
 
-// Edit a task
+
 async function editTask(id, currentText) {
-  const newText = prompt("Edit task text:", currentText); // Prompt for new text
+  const newText = prompt("Edit task text:", currentText); 
   if (newText) {
     try {
       const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
@@ -94,16 +93,16 @@ async function editTask(id, currentText) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: newText }), // Update task text
+        body: JSON.stringify({ text: newText }), 
       });
 
       if (response.ok) {
-        fetchTasks(); // Refresh the task list
+        fetchTasks(); 
       }
     } catch (error) {
       console.error("Error editing task:", error);
     }
   } else {
-    console.error("No new text provided for task"); // Handle cases where prompt is canceled
+    console.error("No new text provided for task"); 
   }
 }
